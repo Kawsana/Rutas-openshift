@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+org.jboss.tools.openshift.ApplicationId=52b65fb45004468a3d00003f
+org.jboss.tools.openshift.ApplicationName=rutas
+org.jboss.tools.openshift.Connection=https\://dcjack57%40hotmail.com@
+org.jboss.tools.openshift.DeployFolder=deployments
+org.jboss.tools.openshift.Domain=kawsana
+org.jboss.tools.openshift.RemoteName=origin
