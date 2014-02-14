@@ -1,22 +1,29 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-	<h:outputStylesheet library="css" name="style.css" />
-</h:head>
-<h:body>
-	<div id="content">
-		<h:form>
-			<p:outputLabel value="Ruta: " />
-			<p:inputText value="#{routeController.route.name}" />
+	<h:head>
+		<h:outputStylesheet library="css" name="style.css" />
+	</h:head>
+	<h:body>
+		<div id="content" align="center">
 			<br /><br />
-			<p:commandButton value="Guardar" action="#{routeController.saveRoute}" />
+			<p:panel>
+				<p:outputLabel value="No existen rutas registradas" />
+			</p:panel>
 			<br /><br />
-		</h:form>
-	</div>
-</h:body>
+			<h:form id="frmNewRoute">
+				<p:panel id="pnlNewRoute">
+					<br />
+					<p:inputText value="#{routeController.route.name}" />
+					<br /><br />
+					<p:commandButton value="Crear" action="#{routeController.saveRoute}" />
+					<br /><br />
+				</p:panel>
+			</h:form>
+		</div>
+	</h:body>
 </html>
