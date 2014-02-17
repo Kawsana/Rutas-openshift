@@ -12,7 +12,7 @@
 		<div id="content" align="center">
 			<br /><br />
 			<p:panel>
-				<p:outputLabel value="No existen rutas registradas" />
+				<p:outputLabel value="#{lang.msgRouteNotExists}" />
 			</p:panel>
 			<br /><br />
 			<h:form id="frmNewRoute">
@@ -20,7 +20,7 @@
 					<br />
 					<p:inputText value="#{routeController.route.name}" />
 					<br /><br />
-					<p:commandButton value="Crear" action="#{routeController.saveRoute}" />
+					<p:commandButton value="#{lang.btnCreate}" action="#{routeController.saveRoute}" />
 					<br /><br />
 				</p:panel>
 			</h:form>
