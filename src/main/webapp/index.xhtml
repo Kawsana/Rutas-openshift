@@ -11,8 +11,10 @@
 	<h:body>
 		<div id="content" align="center">
 			<br /><br />
-			<p:panel>
+			<p:panel rendered="#{routeController.showNoRoutesMessage}">
 				<p:outputLabel value="#{lang.msgRouteNotExists}" />
+				<br /><br />
+				<p:commandButton value="#{lang.btnCreateRoute}" />
 			</p:panel>
 			<br /><br />
 			<h:form id="frmNewRoute">
