@@ -5,10 +5,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+/**
+ * This class represents the route table.
+ * @author David Callay
+ * @version 1.0.0
+ */
 @Entity
 @Table
 public class Route {
 
+	/**
+	 * Primary Key and name route.
+	 */
 	@Id
 	@Size(max = 4)
 	private String name;
