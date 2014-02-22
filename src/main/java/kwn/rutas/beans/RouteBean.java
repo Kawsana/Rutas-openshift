@@ -34,12 +34,18 @@ public class RouteBean implements RouteService{
 	/**
 	 * Save a new route into the database if it not exits.
 	 * @param route	Object to persists into the database.
+	 * @return True if the route has been created, false otherwise.
 	 */
 	@Override
-	public void saveRoute(Route route) {
-		//TODO: throw message if route exits
-		if(em.find(Route.class, route.getName()) == null)
+	public boolean saveRoute(Route route) {
+		boolean success;
+		if(em.find(Route.class, route.getName()) == null){
 			em.persist(route);
+			success = true;
+		}else {
+			success = false;
+		}
+		return success;
 	}
 	
 	/**

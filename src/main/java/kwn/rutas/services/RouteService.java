@@ -17,8 +17,9 @@ public interface RouteService {
 	/**
 	 * Save a new route into the database.
 	 * @param route	Object to persists into the database.
+	 * @return True if the route has been created, false otherwise.
 	 */
-	void saveRoute(Route route);
+	boolean saveRoute(Route route);
 	
 	/**
 	 * Get the routes registered in database.

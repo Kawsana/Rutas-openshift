@@ -16,6 +16,7 @@
 		</script>
 	</h:head>
 	<h:body>
+		<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
 		<div id="content" align="center">
 			<br /><br />
 			<p:panel rendered="#{routeController.showNoRoutesMessage}">
@@ -29,7 +30,7 @@
 					<br />
 					<p:inputText value="#{routeController.route.name}" />
 					<br /><br />
-					<p:commandButton value="#{lang.btnCreate}" action="#{routeController.saveRoute}" />
+					<p:commandButton value="#{lang.btnCreate}" action="#{routeController.saveRoute}" onclick="showRouteListDiv()"/>
 					<br /><br />
 				</p:panel>
 			</h:form>

@@ -2,7 +2,9 @@ package main.java.kwn.rutas.controllers;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 import main.java.kwn.rutas.model.Route;
 import main.java.kwn.rutas.services.RouteService;
@@ -20,7 +22,6 @@ public class RouteController {
 	private Route route;
 	private boolean showNoRoutesMessage;
 
-	
 	/**
 	 * Initialize route variable instances.
 	 */
@@ -40,10 +41,15 @@ public class RouteController {
 	}
 	
 	/**
-	 * Save a new route by routeService.
+	 * Save a new route using routeService.
+	 * Add a message to FacesContext if the route has been created successfully or not.  
 	 */
 	public void saveRoute(){
-		routeService.saveRoute(route);
+		if(routeService.saveRoute(route)){
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, null, "Ruta creada"));
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "La ruta que se quiere crear ya existe"));
+		}
 	}
 
 	public Route getRoute() {
