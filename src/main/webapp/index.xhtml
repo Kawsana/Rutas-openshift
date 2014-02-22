@@ -7,6 +7,13 @@
 
 	<h:head>
 		<h:outputStylesheet library="css" name="style.css" />
+		<h:outputScript library="js" name="jquery-1.11.0.min.js" />
+		<h:outputScript library="js" name="script.js" />
+		<script type="text/javascript" language="javascript">
+		 	$( document ).ready(function() {
+		 		$( "#frmNewRoute\\:pnlNewRoute" ).hide();
+			});
+		</script>
 	</h:head>
 	<h:body>
 		<div id="content" align="center">
@@ -14,7 +21,7 @@
 			<p:panel rendered="#{routeController.showNoRoutesMessage}">
 				<p:outputLabel value="#{lang.msgRouteNotExists}" />
 				<br /><br />
-				<p:commandButton value="#{lang.btnCreateRoute}" />
+				<p:commandButton id="btnCreateRoute" value="#{lang.btnCreateRoute}" onclick="showRouteDiv()"/>
 			</p:panel>
 			<br /><br />
 			<h:form id="frmNewRoute">

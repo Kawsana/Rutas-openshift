@@ -32,12 +32,14 @@ public class RouteBean implements RouteService{
 	private EntityManager em;
 	
 	/**
-	 * Save a new route into the database.
+	 * Save a new route into the database if it not exits.
 	 * @param route	Object to persists into the database.
 	 */
 	@Override
 	public void saveRoute(Route route) {
-		em.persist(route);
+		//TODO: throw message if route exits
+		if(em.find(Route.class, route.getName()) == null)
+			em.persist(route);
 	}
 	
 	/**
