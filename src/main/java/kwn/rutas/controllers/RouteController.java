@@ -8,6 +8,7 @@ import javax.faces.context.FacesContext;
 
 import main.java.kwn.rutas.model.Route;
 import main.java.kwn.rutas.services.RouteService;
+import main.java.kwn.rutas.util.Resources;
 
 /**
  * Manage all view request for Route service.
@@ -46,10 +47,11 @@ public class RouteController {
 	 */
 	public void saveRoute(){
 		if(routeService.saveRoute(route)){
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, null, "Ruta creada"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, null, Resources.msgRouteCreated));
 		} else {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "La ruta que se quiere crear ya existe"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, Resources.msgRouteNotCreated));
 		}
+		route.setName(null);
 	}
 
 	public Route getRoute() {

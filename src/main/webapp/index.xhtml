@@ -28,9 +28,9 @@
 			<h:form id="frmNewRoute">
 				<p:panel id="pnlNewRoute">
 					<br />
-					<p:inputText value="#{routeController.route.name}" />
+					<p:inputText id="txtRouteName" value="#{routeController.route.name}" />
 					<br /><br />
-					<p:commandButton value="#{lang.btnCreate}" action="#{routeController.saveRoute}" onclick="showRouteListDiv()"/>
+					<p:commandButton value="#{lang.btnCreate}" action="#{routeController.saveRoute}" onclick="showRouteListDiv()" update="txtRouteName" />
 					<br /><br />
 				</p:panel>
 			</h:form>
