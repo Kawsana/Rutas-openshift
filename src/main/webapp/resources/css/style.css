@@ -1,4 +1,15 @@
 #content{
     margin: auto;
-    width: 16em;
+    width: 90%;
+}
+.routeItem{
+	height: 120px;
+    text-align: center;
+    width: 160px;
+}
+.no-border{
+	border: none;	
+}
+.total-width{
+	width: 100%;
 }

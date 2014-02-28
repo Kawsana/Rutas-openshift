@@ -7,7 +7,6 @@
 
 	<h:head>
 		<h:outputStylesheet library="css" name="style.css" />
-		<h:outputScript library="js" name="jquery-1.11.0.min.js" />
 		<h:outputScript library="js" name="script.js" />
 		<script type="text/javascript" language="javascript">
 		 	$( document ).ready(function() {
@@ -16,21 +15,34 @@
 		</script>
 	</h:head>
 	<h:body>
-		<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+		<p:messages id="messages" showDetail="true" autoUpdate="true" closable="false" />
 		<div id="content" align="center">
 			<br /><br />
-			<p:panel rendered="#{routeController.showNoRoutesMessage}">
-				<p:outputLabel value="#{lang.msgRouteNotExists}" />
-				<br /><br />
-				<p:commandButton id="btnCreateRoute" value="#{lang.btnCreateRoute}" onclick="showRouteDiv()"/>
-			</p:panel>
-			<br /><br />
 			<h:form id="frmNewRoute">
+				<p:panel id="pnlRoutes">
+					<p:outputLabel id="lblRouteNotExits" value="#{lang.msgRouteNotExists}" rendered="#{routeController.showNoRoutesMessage}"/>
+					<br /><br />
+					<p:panel rendered="#{!routeController.showNoRoutesMessage}" styleClass="no-border">
+					<p:carousel id="carRoutes" value="#{routeController.routeList}" var="route" itemStyleClass="routeItem" effect="fade" >
+						<h:panelGrid columns="1" styleClass="total-width">  
+				        	<br />
+				        	<h:outputText value="#{lang.lblRoute}" />
+				        	<h:outputText value="#{route.name}" />
+				        </h:panelGrid>
+				        <f:facet name="footer">#{lang.msgTotalRoutes} #{routeController.routeList.size()} #{routeController.routeLabel}.</f:facet>
+					</p:carousel>
+					</p:panel>
+					<br /><br />
+					<p:commandButton id="btnCreateRoute" value="#{lang.btnCreateRoute}" onclick="showRouteDiv()" process="btnCreateRoute"/>
+				</p:panel>
+				<br /><br />
 				<p:panel id="pnlNewRoute">
 					<br />
 					<p:inputText id="txtRouteName" value="#{routeController.route.name}" />
 					<br /><br />
-					<p:commandButton value="#{lang.btnCreate}" action="#{routeController.saveRoute}" onclick="showRouteListDiv()" update="txtRouteName" />
+					<p:commandButton value="#{lang.btnCreate}" action="#{routeController.saveRoute}" onclick="showRouteListDiv()" 
+						update="txtRouteName,pnlRoutes" process="@this,txtRouteName,pnlRoutes">
+					</p:commandButton>
 					<br /><br />
 				</p:panel>
 			</h:form>
