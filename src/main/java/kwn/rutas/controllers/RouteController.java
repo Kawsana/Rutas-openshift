@@ -3,9 +3,11 @@ package main.java.kwn.rutas.controllers;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import main.java.kwn.rutas.model.Route;
@@ -15,10 +17,12 @@ import main.java.kwn.rutas.util.Resources;
 
 /**
  * Manage all view request for Route service.
+ * It uses a view scoped in order to not call the get methods in every request.
  * @author David Callay
- * @version 1.1.0
+ * @version 1.2.0
  */
 @ManagedBean
+@ViewScoped
 public class RouteController {
 	
 	@EJB
@@ -36,6 +40,22 @@ public class RouteController {
 	}
 	
 	/**
+	 * Retrieves from the database the registered routes and Set 'showNoRoutesMessage' boolean variable true if routes exits or false otherwise.
+	 * It is used to display 'No routes' message or the routes list if them exist.
+	 */
+	@PostConstruct
+	public void loadRoutes() {
+		routeList.clear();
+		routeList = routeService.getRoutes();
+		
+		if (routeList.isEmpty()){
+			showNoRoutesMessage = true;
+		} else {
+			showNoRoutesMessage = false;
+		}
+	}
+	
+	/**
 	 * Save a new route using routeService.
 	 * Add a message to FacesContext if the route has been created successfully or not.
 	 * Set null to 'name' property in order to clean the 'txtRouteName' field.
@@ -46,7 +66,8 @@ public class RouteController {
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, Resources.msgRouteNotCreated));
 		}
-		route.setName(null);
+		route.setName(null); //Set null to 'name' property in order to clean the 'txtRouteName' field.
+		loadRoutes(); //call to loadRoutes method to update the routes created.
 	}
 
 	/**
@@ -60,26 +81,11 @@ public class RouteController {
 			return Resources.msgRoutes;
 	}
 	
-	/**
-	 * Set showNoRoutesMessage boolean variable if routes exits or false otherwise.
-	 * It is used to display 'No routes' message or the routes list if them exist.
-	 */
 	public boolean isShowNoRoutesMessage() {
-		if (routeService.getRoutes().isEmpty()){
-			showNoRoutesMessage = true;
-		} else {
-			showNoRoutesMessage = false;
-		}
 		return showNoRoutesMessage;
 	}
 
-	/**
-	 * Retrieves from the database the registered routes, cleaning the list and recovering the data list again.
-	 * @return Collection of existing routes.
-	 */
 	public Collection<Route> getRouteList() {
-		routeList.clear();
-		routeList = routeService.getRoutes();
 		return routeList;
 	}
 	
