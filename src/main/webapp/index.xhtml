@@ -38,7 +38,8 @@
 				<br /><br />
 				<p:panel id="pnlNewRoute">
 					<br />
-					<p:inputText id="txtRouteName" value="#{routeController.route.name}" />
+					<p:inputText id="txtRouteName" value="#{routeController.route.name}" onkeypress="return validateNumbers(event)" 
+						maxlength="4" />
 					<br /><br />
 					<p:commandButton value="#{lang.btnCreate}" action="#{routeController.saveRoute}" onclick="showRouteListDiv()" 
 						update="txtRouteName,pnlRoutes" process="@this,txtRouteName,pnlRoutes">
