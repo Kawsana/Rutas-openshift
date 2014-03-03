@@ -19,7 +19,7 @@ import main.java.kwn.rutas.util.Resources;
  * Manage all view request for Route service.
  * It uses a view scoped in order to not call the get methods in every request.
  * @author David Callay
- * @version 1.2.0
+ * @version 1.0.0
  */
 @ManagedBean
 @ViewScoped
@@ -62,9 +62,9 @@ public class RouteController {
 	 */
 	public void saveRoute(){
 		if(routeService.saveRoute(route)){
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, null, Resources.msgRouteCreated));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, Resources.msgRouteCreated, null));
 		} else {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, Resources.msgRouteNotCreated));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, Resources.msgRouteNotCreated, null));
 		}
 		route.setName(null); //Set null to 'name' property in order to clean the 'txtRouteName' field.
 		loadRoutes(); //call to loadRoutes method to update the routes created.

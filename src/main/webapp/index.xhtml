@@ -15,22 +15,22 @@
 		</script>
 	</h:head>
 	<h:body>
-		<p:messages id="messages" showDetail="true" autoUpdate="true" closable="false" />
 		<div id="content" align="center">
 			<br /><br />
 			<h:form id="frmNewRoute">
+				<p:growl id="growl" life="1500" />
 				<p:panel id="pnlRoutes">
 					<p:outputLabel id="lblRouteNotExits" value="#{lang.msgRouteNotExists}" rendered="#{routeController.showNoRoutesMessage}"/>
 					<br /><br />
 					<p:panel rendered="#{!routeController.showNoRoutesMessage}" styleClass="no-border">
-					<p:carousel id="carRoutes" value="#{routeController.routeList}" var="route" itemStyleClass="routeItem" effect="fade" >
-						<h:panelGrid columns="1" styleClass="total-width">  
-				        	<br />
-				        	<h:outputText value="#{lang.lblRoute}" />
-				        	<h:outputText value="#{route.name}" />
-				        </h:panelGrid>
-				        <f:facet name="footer">#{lang.msgTotalRoutes} #{routeController.routeList.size()} #{routeController.routeLabel}.</f:facet>
-					</p:carousel>
+						<p:carousel id="carRoutes" value="#{routeController.routeList}" var="route" itemStyleClass="routeItem" effect="fade" >
+							<h:panelGrid columns="1" styleClass="total-width">  
+					        	<br />
+					        	<h:outputText value="#{lang.lblRoute}" />
+					        	<h:outputText value="#{route.name}" />
+					        </h:panelGrid>
+					        <f:facet name="footer">#{lang.msgTotalRoutes} #{routeController.routeList.size()} #{routeController.routeLabel}.</f:facet>
+						</p:carousel>
 					</p:panel>
 					<br /><br />
 					<p:commandButton id="btnCreateRoute" value="#{lang.btnCreateRoute}" onclick="showRouteDiv()" process="@this" />
@@ -39,10 +39,10 @@
 				<p:panel id="pnlNewRoute">
 					<br />
 					<p:inputText id="txtRouteName" value="#{routeController.route.name}" onkeypress="return validateNumbers(event)" 
-						maxlength="4" />
+						maxlength="4" required="true" requiredMessage="#{lang.msgRouteIdRequired}"/>
 					<br /><br />
 					<p:commandButton value="#{lang.btnCreate}" action="#{routeController.saveRoute}" onclick="showRouteListDiv()" 
-						update="txtRouteName,pnlRoutes" process="@this,txtRouteName,pnlRoutes">
+						update="txtRouteName,pnlRoutes,growl" process="@this,txtRouteName,pnlRoutes">
 					</p:commandButton>
 					<br /><br />
 				</p:panel>
