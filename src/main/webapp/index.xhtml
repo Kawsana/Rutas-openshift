@@ -24,10 +24,11 @@
 					<br /><br />
 					<p:panel rendered="#{!routeController.showNoRoutesMessage}" styleClass="no-border">
 						<p:carousel id="carRoutes" value="#{routeController.routeList}" var="route" itemStyleClass="routeItem" effect="fade" >
-							<h:panelGrid columns="1" styleClass="total-width">  
-					        	<br />
+							<h:panelGrid columns="1" styleClass="total-width">
+								<br />
 					        	<h:outputText value="#{lang.lblRoute}" />
 					        	<h:outputText value="#{route.name}" />
+					        	<h:outputText value="#{lang.lblClients}: #{route.clients}" styleClass="detail"/>
 					        </h:panelGrid>
 					        <f:facet name="footer">#{lang.msgTotalRoutes} #{routeController.routeList.size()} #{routeController.routeLabel}.</f:facet>
 						</p:carousel>

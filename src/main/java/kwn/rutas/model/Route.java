@@ -21,12 +21,25 @@ public class Route {
 	@Size(max = 4)
 	private String name;
 
+	/**
+	 * Number of clients in the route
+	 */
+	private int clients;
+	
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public int getClients() {
+		return clients;
+	}
+
+	public void setClients(int clients) {
+		this.clients = clients;
 	}
 	
 }

@@ -1,15 +1,20 @@
-#content{
+#content {
     margin: auto;
     width: 90%;
 }
-.routeItem{
-	height: 120px;
+.detail {
+	display: block;
+    font-size: medium;
+    margin-top: 0.6em;
+}
+.routeItem {
+	height: 130px;
     text-align: center;
     width: 160px;
 }
-.no-border{
+.no-border {
 	border: none;	
 }
-.total-width{
+.total-width {
 	width: 100%;
 }
