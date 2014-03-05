@@ -15,6 +15,9 @@
 .no-border {
 	border: none;	
 }
+.no-line{
+	text-decoration: none;
+}
 .total-width {
 	width: 100%;
 }

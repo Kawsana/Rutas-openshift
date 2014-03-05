@@ -7,7 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import main.java.kwn.rutas.model.Route;
@@ -22,7 +22,7 @@ import main.java.kwn.rutas.util.Resources;
  * @version 1.0.0
  */
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class RouteController {
 	
 	@EJB
@@ -30,6 +30,7 @@ public class RouteController {
 	private Route route;
 	private boolean showNoRoutesMessage;
 	private Collection<Route> routeList;
+	private Route selectedRoute;
 
 	/**
 	 * Initialize route variable instances.
@@ -95,6 +96,14 @@ public class RouteController {
 
 	public void setRoute(Route route) {
 		this.route = route;
+	}
+
+	public Route getSelectedRoute() {
+		return selectedRoute;
+	}
+
+	public void setSelectedRoute(Route selectedRoute) {
+		this.selectedRoute = selectedRoute;
 	}
 
 }
