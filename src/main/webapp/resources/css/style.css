@@ -21,3 +21,7 @@
 .total-width {
 	width: 100%;
 }
+.total-width:hover {
+	background-color: #DFEFFC;
+	color: #2E6E9E;
+}
