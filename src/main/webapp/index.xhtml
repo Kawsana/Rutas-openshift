@@ -5,17 +5,15 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<h:head>
-		<h:outputStylesheet library="css" name="style.css" />
-		<h:outputScript library="js" name="script.js" />
-		<script type="text/javascript" language="javascript">
-		 	$( document ).ready(function() {
-		 		$( "#frmNewRoute\\:pnlNewRoute" ).hide();
-			});
-		</script>
-	</h:head>
-	<h:body>
-		<div id="content" align="center">
+	<ui:composition template="#{lang.urlTemplate}">
+		<ui:define name="head">
+			<script type="text/javascript" language="javascript">
+			 	$( document ).ready(function() {
+			 		$( "#frmNewRoute\\:pnlNewRoute" ).hide();
+				});
+			</script>
+		</ui:define>
+		<ui:define name="content">
 			<br /><br />
 			<h:form id="frmNewRoute">
 				<p:growl id="growl" life="1500" />
@@ -52,6 +50,6 @@
 					<br /><br />
 				</p:panel>
 			</h:form>
-		</div>
-	</h:body>
+		</ui:define>
+	</ui:composition>
 </html>

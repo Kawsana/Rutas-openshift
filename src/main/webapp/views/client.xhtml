@@ -5,16 +5,23 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"> 
 
-	<h:head>
-		<h:outputStylesheet library="css" name="style.css" />
-	</h:head> 
-	<body>
-		<br />
-		<h:outputText value="#{lang.lblRoute}: #{routeController.selectedRoute.name}" styleClass="title"/>
-		<div id="content" align="center">
-			<p:panel>
-				<p:commandButton id="btnCreateClient" value="#{lang.btnCreateClient}" process="@this" />
+	<ui:composition template="#{lang.urlTemplate}">
+		<ui:define name="head">
+			<script type="text/javascript" language="javascript">
+			 	$( document ).ready(function() {
+			 		$( "#pnlCreateClient" ).hide();
+				});
+			</script>
+		</ui:define>
+		<ui:define name="content">
+			<br />
+			<h:outputText value="#{lang.lblRoute}: #{routeController.selectedRoute.name}" styleClass="title"/>
+			<p:panel id="pnlClientList">
+				<p:commandButton id="btnCreateClient" value="#{lang.btnCreateClient}" process="@this" onclick="showClientDiv()"/>
 			</p:panel>
-		</div>
-	</body> 
+			<p:panel id="pnlCreateClient">
+				<p:commandButton value="#{lang.btnCreate}" onclick="showClientListDiv()" />
+			</p:panel>
+		</ui:define>
+	</ui:composition>
 </html>

@@ -19,3 +19,15 @@ function validateNumbers(evt)
 		return false;
 	}
 }
+
+function showClientDiv()
+{
+	$( "#pnlCreateClient" ).show();
+	$( "#pnlClientList" ).hide();
+}
+
+function showClientListDiv()
+{
+	$( "#pnlCreateClient" ).hide();
+	$( "#pnlClientList" ).show();
+}
