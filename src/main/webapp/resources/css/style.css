@@ -7,16 +7,22 @@
     font-size: medium;
     margin-top: 0.6em;
 }
-.routeItem {
-	height: 130px;
-    text-align: center;
-    width: 160px;
-}
 .no-border {
 	border: none;	
 }
 .no-line{
 	text-decoration: none;
+}
+.routeItem {
+	height: 130px;
+    text-align: center;
+    width: 160px;
+}
+.title{
+    display: block;
+    font-size: xx-large;
+    margin-bottom: 1em;
+    text-align: center;
 }
 .total-width {
 	width: 100%;

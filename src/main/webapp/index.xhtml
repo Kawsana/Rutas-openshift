@@ -24,7 +24,7 @@
 					<br /><br />
 					<p:panel rendered="#{!routeController.showNoRoutesMessage}" styleClass="no-border">
 						<p:carousel id="carRoutes" value="#{routeController.routeList}" var="route" itemStyleClass="routeItem" effect="fade" >
-							<p:commandLink action="route" process="@this" styleClass="no-line">
+							<p:commandLink action="client" process="@this" styleClass="no-line">
 								<h:panelGrid columns="1" styleClass="total-width">
 									<br />
 							        <h:outputText value="#{lang.lblRoute}" />

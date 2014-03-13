@@ -15,8 +15,8 @@
 	<navigation-rule>
 		<from-view-id>index.xhtml</from-view-id>
 		<navigation-case>
-			<from-outcome>route</from-outcome>
-			<to-view-id>/views/route.xhtml</to-view-id>
+			<from-outcome>client</from-outcome>
+			<to-view-id>/views/client.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 </faces-config>
