@@ -15,8 +15,10 @@
 		</ui:define>
 		<ui:define name="content">
 			<br />
-			<h:outputText value="#{lang.lblRoute}: #{routeController.selectedRoute.name}" styleClass="title"/>
+			<h:outputText id="lblRouteName" value="#{lang.lblRoute}: #{routeController.selectedRoute.name}" styleClass="title"/>
 			<p:panel id="pnlClientList">
+				<p:outputLabel id="lblClientsNotExists" value="#{lang.msgClientsNotExists}" rendered="#{clientController.showNoClientsMessage}"/>
+				<br /><br />
 				<p:commandButton id="btnCreateClient" value="#{lang.btnCreateClient}" process="@this" onclick="showClientDiv()"/>
 			</p:panel>
 			<p:panel id="pnlCreateClient">

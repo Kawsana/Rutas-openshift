@@ -6,7 +6,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 /**
- * This class represents the route table.
+ * This class represents the Route table.
  * @author David Callay
  * @version 1.0.0
  */
