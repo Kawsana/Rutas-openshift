@@ -3,12 +3,10 @@ package main.java.kwn.rutas.beans;
 import java.util.Collection;
 
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 import main.java.kwn.rutas.model.Route;
 import main.java.kwn.rutas.services.RouteService;
+import main.java.kwn.rutas.util.Queries;
 
 /**
  * Implementation bean for route entity (RouteService interface).
@@ -17,19 +15,7 @@ import main.java.kwn.rutas.services.RouteService;
  * @version 1.0.0
  */
 @Stateless
-public class RouteBean implements RouteService{
-	
-	/**
-	 * Global Query object to just use it in queries.
-	 */
-	Query query = null;
-	
-	/**
-	 * Global persistence context instance.
-	 * Click for more info {@link http://docs.oracle.com/javaee/6/api/javax/persistence/EntityManager.html}
-	 */
-	@PersistenceContext
-	private EntityManager em;
+public class RouteBean extends BaseBean implements RouteService{
 	
 	/**
 	 * Save a new route into the database if it not exits.
@@ -54,7 +40,7 @@ public class RouteBean implements RouteService{
 	 */
 	@SuppressWarnings("unchecked")
 	public Collection<Route> getRoutes(){
-		query = em.createQuery("select r from Route r");
+		query = em.createQuery(Queries.getRoutes);
 		return query.getResultList();
 	}
 }

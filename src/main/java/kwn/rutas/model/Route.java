@@ -1,7 +1,11 @@
 package main.java.kwn.rutas.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -26,6 +30,12 @@ public class Route {
 	 */
 	private int clients;
 	
+	/**
+	 * Relationship with client entity.
+	 */
+	@OneToMany(mappedBy="route", fetch=FetchType.EAGER)
+	private List<Client> clientList;
+	
 	public String getName() {
 		return name;
 	}
@@ -40,6 +50,14 @@ public class Route {
 
 	public void setClients(int clients) {
 		this.clients = clients;
+	}
+
+	public List<Client> getClientList() {
+		return clientList;
+	}
+
+	public void setClientList(List<Client> clientList) {
+		this.clientList = clientList;
 	}
 	
 }

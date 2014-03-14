@@ -41,7 +41,6 @@ public class ClientController {
 	public void loadClients() {
 		clientList.clear();
 		clientList = clientService.getClientsByRoute(routeName);
-		
 		if (clientList.isEmpty()){
 			showNoClientsMessage = true;
 		} else {
