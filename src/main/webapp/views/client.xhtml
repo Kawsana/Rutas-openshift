@@ -22,8 +22,48 @@
 				<p:commandButton id="btnCreateClient" value="#{lang.btnCreateClient}" process="@this" onclick="showClientDiv()"/>
 			</p:panel>
 			<p:panel id="pnlCreateClient">
+				<p:panelGrid columns="4">
+					<p:outputLabel value="#{lang.lblLocalName}:" />
+					<p:inputText />
+					<p:outputLabel value="#{lang.lblLocalId}:" />
+					<p:inputText size="13" maxlength="13" />
+					<p:outputLabel value="#{lang.lblAddress}:" />
+					<p:inputText size="50"/>
+					<p:outputLabel value="#{lang.lblReference}:" />
+					<p:inputText size="35"/>
+					<p:outputLabel value="#{lang.lblPhone}:" />
+					<p:inputText />
+					<p:outputLabel value="#{lang.lblCellPhone}:" />
+					<p:inputText />
+				</p:panelGrid>
+				<br />
+				<p:panelGrid columns="4">
+					<p:outputLabel value="#{lang.lblFirstName}:" />
+					<p:inputText />
+					<p:outputLabel value="#{lang.lblSecondName}:" />
+					<p:inputText />
+					<p:outputLabel value="#{lang.lblFirstLastName}:" />
+					<p:inputText />
+					<p:outputLabel value="#{lang.lblSecondLastName}:" />
+					<p:inputText />
+					<p:outputLabel value="#{lang.lblDateOfBirth}:" />
+					<p:inputText />
+				</p:panelGrid>
+				<br />
+				<p:panelGrid columns="4">
+					<p:outputLabel value="#{lang.lblVisitFrequency}:" />
+					<p:inputText />
+					<p:outputLabel value="#{lang.lblExhibitor}:" />
+					<p:inputText />
+				</p:panelGrid>
+				<br />
 				<p:commandButton value="#{lang.btnCreate}" onclick="showClientListDiv()" />
 			</p:panel>
+			<br /><br />
+			<p:commandLink styleClass="no-line">
+				<h:graphicImage library="images" name="folder.png" />
+				<h:outputText value="Rutas" styleClass="text-button"/>
+			</p:commandLink>
 		</ui:define>
 	</ui:composition>
 </html>
