@@ -2,13 +2,16 @@
     margin: auto;
     width: 90%;
 }
+.button:visited {
+	color: black;
+}
 .detail {
 	display: block;
     font-size: medium;
     margin-top: 0.6em;
 }
 .no-border {
-	border: none;	
+	border: none;
 }
 .no-line{
 	text-decoration: none;
@@ -18,13 +21,18 @@
     text-align: center;
     width: 160px;
 }
+.tab{
+	margin-top: 1%;
+}
 .text-button {
 	display: block;
     font-size: medium;
 }
 .title{
+    color: #2E6E9E;
     display: block;
     font-size: xx-large;
+    font-weight: bold;
     margin-bottom: 1em;
 }
 .total-width {
