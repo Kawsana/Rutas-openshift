@@ -40,7 +40,7 @@ public class RouteBean extends BaseBean implements RouteService{
 	 */
 	@SuppressWarnings("unchecked")
 	public Collection<Route> getRoutes(){
-		query = em.createQuery(Queries.getRoutes);
+		query = em.createQuery(Queries.GET_ROUTES);
 		return query.getResultList();
 	}
 }

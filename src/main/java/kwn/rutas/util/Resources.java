@@ -2,8 +2,8 @@ package main.java.kwn.rutas.util;
 
 public final class Resources {
 	
-	public static String msgRouteCreated = "Ruta creada";
-	public static String msgRouteNotCreated = "La ruta que se quiere crear ya existe";
-	public static String msgRoutes = "rutas";
-	public static String msgRoute = "ruta";
+	public static final String MSG_ROUTE_CREATED = "Ruta creada";
+	public static final String MSG_ROUTE_NOT_CREATED = "La ruta que se quiere crear ya existe";
+	public static final String MSG_ROUTES = "rutas";
+	public static final String MSG_ROUTE = "ruta";
 }

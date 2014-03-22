@@ -22,12 +22,12 @@ function validateNumbers(evt)
 
 function showClientDiv()
 {
-	$( "#pnlCreateClient" ).show();
-	$( "#pnlClientList" ).hide();
+	$( "#frmClient\\:pnlCreateClient" ).show();
+	$( "#frmClient\\:pnlClientList" ).hide();
 }
 
 function showClientListDiv()
 {
-	$( "#pnlCreateClient" ).hide();
-	$( "#pnlClientList" ).show();
+	$( "#frmClient\\:pnlCreateClient" ).hide();
+	$( "#frmClient\\:pnlClientList" ).show();
 }

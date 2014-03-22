@@ -13,6 +13,9 @@
 .no-border {
 	border: none;
 }
+.no-border td, .no-border tr{
+	border: none !important;
+}
 .no-line{
 	text-decoration: none;
 }

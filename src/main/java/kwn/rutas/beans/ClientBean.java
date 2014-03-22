@@ -21,8 +21,8 @@ public class ClientBean extends BaseBean implements ClientService{
 	@SuppressWarnings("unchecked")
 	@Override
 	public Collection<Client> getClientsByRoute(String id) {
-		Query query = em.createQuery(Queries.getClientsByRoute);
-		query.setParameter(Constants.One, id);
+		Query query = em.createQuery(Queries.GET_CLIENTS_BY_ROUTE);
+		query.setParameter(Constants.ONE, id);
 		return query.getResultList();
 	}
 	

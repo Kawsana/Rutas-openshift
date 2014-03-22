@@ -25,12 +25,17 @@ public class Client {
 	private String id;
 
 	/**
-	 * Foreign Key for route table
+	 * Foreign Key for route table.
 	 */
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name="route")
 	private Route route;
+	
+	/**
+	 * Define if the client have or not an exhibitor.
+	 */
+	private boolean Exhibitor;
 	
 	public String getId() {
 		return id;
@@ -46,6 +51,14 @@ public class Client {
 
 	public void setRoute(Route route) {
 		this.route = route;
+	}
+
+	public boolean isExhibitor() {
+		return Exhibitor;
+	}
+
+	public void setExhibitor(boolean exhibitor) {
+		Exhibitor = exhibitor;
 	}
 	
 }

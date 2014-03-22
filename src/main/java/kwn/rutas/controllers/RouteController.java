@@ -63,9 +63,9 @@ public class RouteController {
 	 */
 	public void saveRoute(){
 		if(routeService.saveRoute(route)){
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, Resources.msgRouteCreated, null));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, Resources.MSG_ROUTE_CREATED, null));
 		} else {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, Resources.msgRouteNotCreated, null));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, Resources.MSG_ROUTE_NOT_CREATED, null));
 		}
 		route.setName(null); //Set null to 'name' property in order to clean the 'txtRouteName' field.
 		loadRoutes(); //call to loadRoutes method to update the routes created.
@@ -76,10 +76,10 @@ public class RouteController {
 	 * @return 'ruta' string if the list size contains one element or 'rutas' string if the size contains more than one.
 	 */
 	public String getRouteLabel(){
-		if(routeList.size() == Constants.One)
-			return Resources.msgRoute;
+		if(routeList.size() == Constants.ONE)
+			return Resources.MSG_ROUTE;
 		else
-			return Resources.msgRoutes;
+			return Resources.MSG_ROUTES;
 	}
 	
 	public boolean isShowNoRoutesMessage() {
