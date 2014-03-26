@@ -10,6 +10,12 @@ import main.java.kwn.rutas.services.ClientService;
 import main.java.kwn.rutas.util.Constants;
 import main.java.kwn.rutas.util.Queries;
 
+/**
+ * Implementation bean for client entity (ClientService interface).
+ * It handle its JQL queries.
+ * @author David Callay
+ * @version 1.0.0
+ */
 @Stateless
 public class ClientBean extends BaseBean implements ClientService{
 

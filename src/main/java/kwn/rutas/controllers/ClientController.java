@@ -10,6 +10,8 @@ import javax.faces.bean.ManagedProperty;
 
 import main.java.kwn.rutas.model.Client;
 import main.java.kwn.rutas.services.ClientService;
+import main.java.kwn.rutas.services.DateService;
+import main.java.kwn.rutas.util.Select;
 
 /**
  * Manage all view request for Client service.
@@ -25,12 +27,20 @@ public class ClientController {
 	private ClientService clientService;
 	@ManagedProperty(value="#{routeController.selectedRoute.name}")
 	private String routeName;
+	private DateService dateService;
+	private Collection<Select> days;
+	private Collection<Select> months;
+	private Collection<Select> years;
 
 	/**
 	 * Initialize client variable instances.
 	 */
 	public ClientController() {
 		clientList = new ArrayList<Client>();
+		dateService = new DateService();
+		days = dateService.getDays();
+		months = dateService.getMonths();
+		years = dateService.getYears();
 	}
 	
 	/**
@@ -58,6 +68,18 @@ public class ClientController {
 
 	public void setRouteName(String routeName) {
 		this.routeName = routeName;
+	}
+
+	public Collection<Select> getDays() {
+		return days;
+	}
+
+	public Collection<Select> getMonths() {
+		return months;
+	}
+
+	public Collection<Select> getYears() {
+		return years;
 	}
 
 }
