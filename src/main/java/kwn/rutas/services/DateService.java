@@ -34,18 +34,18 @@ public class DateService {
 	 */
 	public Collection<Select> getMonths() {
 		Collection<Select> months = new ArrayList<Select>();
-		months.add(new Select(Resources.Months.MONTH_1, Resources.Months.MONTH_1));
-		months.add(new Select(Resources.Months.MONTH_2, Resources.Months.MONTH_2));
-		months.add(new Select(Resources.Months.MONTH_3, Resources.Months.MONTH_3));
-		months.add(new Select(Resources.Months.MONTH_4, Resources.Months.MONTH_4));
-		months.add(new Select(Resources.Months.MONTH_5, Resources.Months.MONTH_5));
-		months.add(new Select(Resources.Months.MONTH_6, Resources.Months.MONTH_6));
-		months.add(new Select(Resources.Months.MONTH_7, Resources.Months.MONTH_7));
-		months.add(new Select(Resources.Months.MONTH_8, Resources.Months.MONTH_8));
-		months.add(new Select(Resources.Months.MONTH_9, Resources.Months.MONTH_9));
-		months.add(new Select(Resources.Months.MONTH_10, Resources.Months.MONTH_10));
-		months.add(new Select(Resources.Months.MONTH_11, Resources.Months.MONTH_11));
-		months.add(new Select(Resources.Months.MONTH_12, Resources.Months.MONTH_12));
+		months.add(new Select(Resources.Months.MONTH_1, Constants.ONE));
+		months.add(new Select(Resources.Months.MONTH_2, Constants.TWO));
+		months.add(new Select(Resources.Months.MONTH_3, Constants.THREE));
+		months.add(new Select(Resources.Months.MONTH_4, Constants.FOUR));
+		months.add(new Select(Resources.Months.MONTH_5, Constants.FIVE));
+		months.add(new Select(Resources.Months.MONTH_6, Constants.SIX));
+		months.add(new Select(Resources.Months.MONTH_7, Constants.SEVEN));
+		months.add(new Select(Resources.Months.MONTH_8, Constants.EIGHT));
+		months.add(new Select(Resources.Months.MONTH_9, Constants.NINE));
+		months.add(new Select(Resources.Months.MONTH_10, Constants.TEN));
+		months.add(new Select(Resources.Months.MONTH_11, Constants.ELEVEN));
+		months.add(new Select(Resources.Months.MONTH_12, Constants.TWELVE));
 		return months;
 	}
 	

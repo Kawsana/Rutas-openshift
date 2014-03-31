@@ -20,4 +20,11 @@ public interface ClientService {
 	 * @return Collection of clients
 	 */
 	public Collection<Client> getClientsByRoute(String id);
+	
+	/**
+	 * Save a new client into the database.
+	 * @param client object to persists into the database.
+	 * @return True if the client has been created, false otherwise.
+	 */
+	boolean saveClient(Client client);
 }

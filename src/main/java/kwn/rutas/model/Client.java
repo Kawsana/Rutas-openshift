@@ -1,5 +1,7 @@
 package main.java.kwn.rutas.model;
 
+import java.util.Calendar;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -33,6 +35,11 @@ public class Client {
 	private Route route;
 	
 	/**
+	 * Client birthday
+	 */
+	private Calendar DateOfBirth;
+	
+	/**
 	 * Define if the client have or not an exhibitor.
 	 */
 	private boolean Exhibitor;
@@ -59,6 +66,14 @@ public class Client {
 
 	public void setExhibitor(boolean exhibitor) {
 		Exhibitor = exhibitor;
+	}
+
+	public Calendar getDateOfBirth() {
+		return DateOfBirth;
+	}
+
+	public void setDateOfBirth(Calendar dateOfBirth) {
+		DateOfBirth = dateOfBirth;
 	}
 	
 }

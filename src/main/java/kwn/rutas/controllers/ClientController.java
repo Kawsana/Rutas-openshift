@@ -1,7 +1,9 @@
 package main.java.kwn.rutas.controllers;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.GregorianCalendar;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -9,6 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
 import main.java.kwn.rutas.model.Client;
+import main.java.kwn.rutas.model.Route;
 import main.java.kwn.rutas.services.ClientService;
 import main.java.kwn.rutas.services.DateService;
 import main.java.kwn.rutas.util.Select;
@@ -25,12 +28,14 @@ public class ClientController {
 	private Collection<Client> clientList;
 	@EJB
 	private ClientService clientService;
-	@ManagedProperty(value="#{routeController.selectedRoute.name}")
-	private String routeName;
+	@ManagedProperty(value="#{routeController.selectedRoute}")
+	private Route selectedRoute;
 	private DateService dateService;
 	private Collection<Select> days;
 	private Collection<Select> months;
 	private Collection<Select> years;
+	private int selectedDay = 0, selectedMonth = 0, selectedYear = 0;
+	private Client client;
 
 	/**
 	 * Initialize client variable instances.
@@ -41,6 +46,7 @@ public class ClientController {
 		days = dateService.getDays();
 		months = dateService.getMonths();
 		years = dateService.getYears();
+		client = new Client();
 	}
 	
 	/**
@@ -50,7 +56,7 @@ public class ClientController {
 	@PostConstruct
 	public void loadClients() {
 		clientList.clear();
-		clientList = clientService.getClientsByRoute(routeName);
+		clientList = clientService.getClientsByRoute(selectedRoute.getName());
 		if (clientList.isEmpty()){
 			showNoClientsMessage = true;
 		} else {
@@ -58,16 +64,27 @@ public class ClientController {
 		}
 	}
 	
+	/**
+	 * Save a new client using clientService.
+	 */
+	public void saveClient() {
+		Calendar dateOfBirth = new GregorianCalendar(selectedYear, selectedMonth, selectedDay);
+		client.setDateOfBirth(dateOfBirth);
+		client.setRoute(selectedRoute);
+		
+		clientService.saveClient(client);
+	}
+	
 	public boolean isShowNoClientsMessage() {
 		return showNoClientsMessage;
 	}
 
-	public String getRouteName() {
-		return routeName;
+	public Route getSelectedRoute() {
+		return selectedRoute;
 	}
 
-	public void setRouteName(String routeName) {
-		this.routeName = routeName;
+	public void setSelectedRoute(Route selectedRoute) {
+		this.selectedRoute = selectedRoute;
 	}
 
 	public Collection<Select> getDays() {
@@ -80,6 +97,38 @@ public class ClientController {
 
 	public Collection<Select> getYears() {
 		return years;
+	}
+
+	public void setSelectedDay(int selectedDay) {
+		this.selectedDay = selectedDay;
+	}
+
+	public void setSelectedMonth(int selectedMonth) {
+		this.selectedMonth = selectedMonth;
+	}
+
+	public void setSelectedYear(int selectedYear) {
+		this.selectedYear = selectedYear;
+	}
+
+	public int getSelectedDay() {
+		return selectedDay;
+	}
+
+	public int getSelectedMonth() {
+		return selectedMonth;
+	}
+
+	public int getSelectedYear() {
+		return selectedYear;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public Client getClient() {
+		return client;
 	}
 
 }
