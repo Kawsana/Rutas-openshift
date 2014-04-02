@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
 	<h:head>
 		<h:outputStylesheet library="css" name="style.css" />
@@ -11,6 +12,14 @@
 	</h:head>
 	<body>
 		<div id="content" align="center">
+			<p:ajaxStatus styleClass="loading">
+			    <f:facet name="start">
+			        <h:graphicImage library="images" name="loader.gif"/>
+			    </f:facet>
+			    <f:facet name="complete">  
+			        <h:outputText value="" />  
+			    </f:facet>
+			</p:ajaxStatus>
 			<ui:insert name="content">#{lang.msgContent}</ui:insert>
 		</div>
 	</body>
