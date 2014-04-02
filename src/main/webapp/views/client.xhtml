@@ -52,15 +52,15 @@
 							<p:outputLabel value="#{lang.lblDateOfBirth}:" />
 					        <p:panelGrid id="pgDateOfBirth" columns="3">
 					        	<p:selectOneMenu value="#{clientController.selectedDay}">
-					            <f:selectItem itemLabel="Día" itemValue="" />
+					            <f:selectItem itemLabel="#{lang.lblDay}" itemValue="" />
 					            <f:selectItems value="#{clientController.days}" var="day" itemLabel="#{day.label}" itemValue="#{day.value}"/>
 						        </p:selectOneMenu>
 						        <p:selectOneMenu value="#{clientController.selectedMonth}">
-						            <f:selectItem itemLabel="Mes" itemValue="" />
+						            <f:selectItem itemLabel="#{lang.lblMonth}" itemValue="" />
 						            <f:selectItems value="#{clientController.months}" var="month" itemLabel="#{month.label}" itemValue="#{month.value}"/>
 						        </p:selectOneMenu>
 						        <p:selectOneMenu value="#{clientController.selectedYear}">
-						            <f:selectItem itemLabel="Año" itemValue="" />
+						            <f:selectItem itemLabel="#{lang.lblYear}" itemValue="" />
 						            <f:selectItems value="#{clientController.years}" var="year" itemLabel="#{year.label}" itemValue="#{year.value}"/>
 						        </p:selectOneMenu>
 					        </p:panelGrid>

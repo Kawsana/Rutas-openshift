@@ -13,11 +13,18 @@
 .no-border {
 	border: none;
 }
-.no-border td, .no-border tr{
+.no-border td, .no-border tr {
 	border: none !important;
 }
-.no-line{
+.no-line {
 	text-decoration: none;
+}
+.loading {
+    bottom: 50%;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
 }
 .routeItem {
 	height: 130px;
