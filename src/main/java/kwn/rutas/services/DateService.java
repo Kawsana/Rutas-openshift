@@ -6,6 +6,7 @@ import java.util.Collection;
 import main.java.kwn.rutas.util.Constants;
 import main.java.kwn.rutas.util.Resources;
 import main.java.kwn.rutas.util.Select;
+import main.java.kwn.rutas.util.SystemVariables;
 
 /**
  * Handle services related with dates.
@@ -56,7 +57,7 @@ public class DateService {
 	public Collection<Select> getYears() {
 		Collection<Select> years = new ArrayList<Select>();
 		// The initial and final year are stored in a static class.
-		for(int i = Constants.INITIAL_YEAR; i <= Constants.FINAL_YEAR; i ++){
+		for(int i = SystemVariables.INITIAL_YEAR; i <= SystemVariables.FINAL_YEAR; i ++){
 			years.add(new Select(i, i)); 
 		}
 		return years;

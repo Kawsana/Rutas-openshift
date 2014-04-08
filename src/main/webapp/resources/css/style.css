@@ -26,19 +26,29 @@
     width: 100%;
     z-index: 1;
 }
+.required {
+	background-image: url("#{resource['images:required.png']}");
+	background-repeat: no-repeat;
+    margin-left: -15px;
+    padding-left: 18%;
+    position: relative;
+}
 .routeItem {
 	height: 130px;
     text-align: center;
     width: 160px;
 }
-.tab{
-	margin-top: 1%;
+.select {
+	width: 70px !important;
+}
+.tab {
+	margin-top: 1%;	
 }
 .text-button {
 	display: block;
     font-size: medium;
 }
-.title{
+.title {
     color: #2E6E9E;
     display: block;
     font-size: xx-large;

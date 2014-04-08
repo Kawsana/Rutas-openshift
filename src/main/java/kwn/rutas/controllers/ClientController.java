@@ -14,6 +14,7 @@ import main.java.kwn.rutas.model.Client;
 import main.java.kwn.rutas.model.Route;
 import main.java.kwn.rutas.services.ClientService;
 import main.java.kwn.rutas.services.DateService;
+import main.java.kwn.rutas.util.Constants;
 import main.java.kwn.rutas.util.Select;
 
 /**
@@ -36,7 +37,7 @@ public class ClientController {
 	private Collection<Select> years;
 	private int selectedDay = 0, selectedMonth = 0, selectedYear = 0;
 	private Client client;
-
+	
 	/**
 	 * Initialize client variable instances.
 	 */
@@ -68,8 +69,14 @@ public class ClientController {
 	 * Save a new client using clientService.
 	 */
 	public void saveClient() {
-		Calendar dateOfBirth = new GregorianCalendar(selectedYear, selectedMonth, selectedDay);
-		client.setDateOfBirth(dateOfBirth);
+
+		// Verifies if the user select a date with the components before save it or set null in this field.
+		if(selectedYear == Constants.ZERO || selectedMonth == Constants.ZERO || selectedDay == Constants.ZERO) {
+			client.setDateOfBirth(null);
+		} else {
+			Calendar dateOfBirth = new GregorianCalendar(selectedYear, selectedMonth, selectedDay);
+			client.setDateOfBirth(dateOfBirth);
+		}
 		client.setRoute(selectedRoute);
 		
 		clientService.saveClient(client);
@@ -129,6 +136,10 @@ public class ClientController {
 
 	public Client getClient() {
 		return client;
+	}
+
+	public Collection<Client> getClientList() {
+		return clientList;
 	}
 
 }

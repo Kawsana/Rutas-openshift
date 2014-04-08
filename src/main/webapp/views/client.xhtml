@@ -20,47 +20,69 @@
 				<p:panel id="pnlClientList">
 					<p:outputLabel id="lblClientsNotExists" value="#{lang.msgClientsNotExists}" rendered="#{clientController.showNoClientsMessage}"/>
 					<br /><br />
+					<p:panel rendered="#{!clientController.showNoClientsMessage}" styleClass="no-border">
+						<p:dataTable value="#{clientController.clientList}" paginator="true" rows="10" var="client">
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Id" />
+								</f:facet>
+								<h:outputText value="#{client.id}" />
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Exhibidor" />
+								</f:facet>
+								<h:outputText value="#{client.exhibitor}" />
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Fecha de nacimiento" />
+								</f:facet>
+								<h:outputText value="#{client.dateFormatted}" />
+							</p:column>
+						</p:dataTable>
+					</p:panel>
 					<p:commandButton id="btnCreateClient" value="#{lang.btnCreateClient}" process="@this" onclick="showClientDiv()"/>
 				</p:panel>
 				<p:panel id="pnlCreateClient">
 					<p:fieldset legend="#{lang.lblRoute}">
 						<p:panelGrid id="pgRouteData" columns="4" styleClass="no-border">
-							<p:outputLabel value="#{lang.lblLocalName}:" />
+							<p:outputLabel value="#{lang.lblLocalName}:" styleClass="required"/>
 							<p:inputText />
-							<p:outputLabel value="#{lang.lblLocalId}:" />
-							<p:inputText value="#{clientController.client.id}" size="13" maxlength="13" />
-							<p:outputLabel value="#{lang.lblAddress}:" />
+							<p:outputLabel value="#{lang.lblLocalId}:" styleClass="required" />
+							<p:inputText value="#{clientController.client.id}" size="13" maxlength="13" onkeypress="return validateNumbers(event)"/>
+							<p:outputLabel value="#{lang.lblAddress}:"/>
 							<p:inputText size="50"/>
 							<p:outputLabel value="#{lang.lblReference}:" />
 							<p:inputText size="35"/>
 							<p:outputLabel value="#{lang.lblPhone}:" />
-							<p:inputText />
+							<p:inputText onkeypress="return validateNumbers(event)"/>
 							<p:outputLabel value="#{lang.lblCellPhone}:" />
-							<p:inputText />
+							<p:inputText onkeypress="return validateNumbers(event)"/>
 						</p:panelGrid>
 					</p:fieldset>
 					<p:fieldset legend="#{lang.lblClient}" styleClass="tab">
 						<p:panelGrid columns="4" styleClass="no-border">
-							<p:outputLabel value="#{lang.lblFirstName}:" />
-							<p:inputText />
+							<p:outputLabel value="#{lang.lblFirstName}:" styleClass="required"/>
+							<p:inputText onkeypress="return validateLetters(event)"/>
 							<p:outputLabel value="#{lang.lblSecondName}:" />
-							<p:inputText />
-							<p:outputLabel value="#{lang.lblFirstLastName}:" />
-							<p:inputText />
+							<p:inputText onkeypress="return validateLetters(event)"/>
+							<p:outputLabel value="#{lang.lblFirstLastName}:" styleClass="required"/>
+							<p:inputText onkeypress="return validateLetters(event)"/>
 							<p:outputLabel value="#{lang.lblSecondLastName}:" />
-							<p:inputText />
+							<p:inputText onkeypress="return validateLetters(event)"/>
 							<p:outputLabel value="#{lang.lblDateOfBirth}:" />
 					        <p:panelGrid id="pgDateOfBirth" columns="3">
-					        	<p:selectOneMenu value="#{clientController.selectedDay}">
-					            <f:selectItem itemLabel="#{lang.lblDay}" itemValue="" />
-					            <f:selectItems value="#{clientController.days}" var="day" itemLabel="#{day.label}" itemValue="#{day.value}"/>
+					        	<p:selectOneMenu value="#{clientController.selectedDay}" panelStyleClass="select" styleClass="select">
+						            <f:selectItem itemLabel="#{lang.lblDay}" itemValue="#{lang.valZero}" />
+						            <f:selectItems value="#{clientController.days}" var="day" itemLabel="#{day.label}" itemValue="#{day.value}"/>
 						        </p:selectOneMenu>
-						        <p:selectOneMenu value="#{clientController.selectedMonth}">
-						            <f:selectItem itemLabel="#{lang.lblMonth}" itemValue="" />
+						        <p:selectOneMenu value="#{clientController.selectedMonth}" panelStyleClass="select" styleClass="select">
+						            <f:selectItem itemLabel="#{lang.lblMonth}" itemValue="#{lang.valZero}" />
 						            <f:selectItems value="#{clientController.months}" var="month" itemLabel="#{month.label}" itemValue="#{month.value}"/>
 						        </p:selectOneMenu>
-						        <p:selectOneMenu value="#{clientController.selectedYear}">
-						            <f:selectItem itemLabel="#{lang.lblYear}" itemValue="" />
+						        <p:selectOneMenu value="#{clientController.selectedYear}" panelStyleClass="select" styleClass="select">
+						            <f:selectItem itemLabel="#{lang.lblYear}" itemValue="#{lang.valZero}" />
 						            <f:selectItems value="#{clientController.years}" var="year" itemLabel="#{year.label}" itemValue="#{year.value}"/>
 						        </p:selectOneMenu>
 					        </p:panelGrid>
@@ -68,9 +90,9 @@
 					</p:fieldset>
 					<p:fieldset legend="#{lang.lblVisit}" styleClass="tab">
 						<p:panelGrid id="pgVisitData" columns="4" styleClass="no-border">
-							<p:outputLabel value="#{lang.lblVisitFrequency}:" />
+							<p:outputLabel value="#{lang.lblVisitFrequency}:" styleClass="required"/>
 							<p:inputText />
-							<p:outputLabel value="#{lang.lblExhibitor}:" />
+							<p:outputLabel value="#{lang.lblExhibitor}:" styleClass="required"/>
 							<p:selectOneButton value="#{clientController.client.exhibitor}">
 					            <f:selectItem itemLabel="#{lang.btnYes}" itemValue="#{lang.valOne}" />
 					            <f:selectItem itemLabel="#{lang.btnNo}" itemValue="#{lang.valZero}" />

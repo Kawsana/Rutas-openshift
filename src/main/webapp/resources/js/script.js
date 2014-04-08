@@ -31,3 +31,12 @@ function showClientListDiv()
 	$( "#frmClient\\:pnlCreateClient" ).hide();
 	$( "#frmClient\\:pnlClientList" ).show();
 }
+
+function validateLetters(evt) {
+	keynum = (document.all) ? evt.keyCode : evt.which;
+	if (!(keynum > 47 && keynum < 58) || keynum == 8 || keynum == 13 || keynum == 32) {
+		return true;
+	} else {
+		return false;
+	}
+}

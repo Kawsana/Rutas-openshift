@@ -1,5 +1,10 @@
 package main.java.kwn.rutas.util;
 
+/**
+ * Static class that storages integer or string constants values.
+ * @author David Callay
+ * @version 1.0.0
+ */
 public final class Constants {
 	
 	public static final int ONE = 1;
@@ -15,6 +20,6 @@ public final class Constants {
 	public static final int ELEVEN = 11;
 	public static final int TWELVE = 12;
 	public static final int DAYS = 31;
-	public static final int INITIAL_YEAR = 1940;
-	public static final int FINAL_YEAR = 2000;
+	public static final int ZERO = 0;
+	public static final String EMPTY_STRING = "";
 }

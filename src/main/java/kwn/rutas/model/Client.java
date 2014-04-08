@@ -1,5 +1,6 @@
 package main.java.kwn.rutas.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import javax.persistence.Entity;
@@ -9,6 +10,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import main.java.kwn.rutas.util.Constants;
+import main.java.kwn.rutas.util.SystemVariables;
 
 /**
  * This class represents the Client table.
@@ -44,6 +48,22 @@ public class Client {
 	 */
 	private boolean Exhibitor;
 	
+	/**
+	 * Used to format the dateOfBirth property.
+	 */
+	public static SimpleDateFormat dateFormat = new SimpleDateFormat(SystemVariables.DATE_FORMAT);
+	
+	/**
+	 * Format the dateOfBirth property/value based on the simpleDateFormat object (dateFormat).
+	 * @return Date formatted
+	 */
+	public String getDateFormatted() {
+		if(DateOfBirth != null)
+			return dateFormat.format(DateOfBirth.getTime());
+		else
+			return Constants.EMPTY_STRING;
+	}	
+	
 	public String getId() {
 		return id;
 	}
@@ -71,7 +91,7 @@ public class Client {
 	public Calendar getDateOfBirth() {
 		return DateOfBirth;
 	}
-
+	
 	public void setDateOfBirth(Calendar dateOfBirth) {
 		DateOfBirth = dateOfBirth;
 	}
