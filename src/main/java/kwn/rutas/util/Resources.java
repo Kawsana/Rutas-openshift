@@ -11,6 +11,9 @@ public final class Resources {
 	public static final String MSG_ROUTE_NOT_CREATED = "La ruta que se quiere crear ya existe";
 	public static final String MSG_ROUTES = "rutas";
 	public static final String MSG_ROUTE = "ruta";
+	public static final String MSG_CLIENT_CREATED = "Cliente creado";
+	public static final String MSG_CLIENT_NOT_CREATED = "El cliente que se quiere crear ya existe";
+	public static final String MSG_CLIENT_ID_INVALID = "La identificación no es válida";
 	
 	/**
 	 * Sub class of Resources used to storage the months of the year.

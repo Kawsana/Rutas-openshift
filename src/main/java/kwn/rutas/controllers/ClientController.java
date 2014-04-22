@@ -7,14 +7,17 @@ import java.util.GregorianCalendar;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
 
 import main.java.kwn.rutas.model.Client;
 import main.java.kwn.rutas.model.Route;
 import main.java.kwn.rutas.services.ClientService;
 import main.java.kwn.rutas.services.DateService;
 import main.java.kwn.rutas.util.Constants;
+import main.java.kwn.rutas.util.Resources;
 import main.java.kwn.rutas.util.Select;
 
 /**
@@ -67,9 +70,11 @@ public class ClientController {
 	
 	/**
 	 * Save a new client using clientService.
+	 * Set date of birth if the user had entered those values.
+	 * Verifies if the id is correct before save the client.
+	 * Add a message to FacesContext if the client has been created successfully or not.
 	 */
 	public void saveClient() {
-
 		// Verifies if the user select a date with the components before save it or set null in this field.
 		if(selectedYear == Constants.ZERO || selectedMonth == Constants.ZERO || selectedDay == Constants.ZERO) {
 			client.setDateOfBirth(null);
@@ -77,9 +82,22 @@ public class ClientController {
 			Calendar dateOfBirth = new GregorianCalendar(selectedYear, selectedMonth, selectedDay);
 			client.setDateOfBirth(dateOfBirth);
 		}
+		// Set selected route to the object.
 		client.setRoute(selectedRoute);
 		
-		clientService.saveClient(client);
+		// Id validation. Only if the id is correct the client is saved.
+		if(clientService.validateId(client.getId().trim()) == Constants.ONE) {
+			// Save the client
+			if(clientService.saveClient(client)){
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, Resources.MSG_CLIENT_CREATED, null));
+				// Update the client lists.
+				loadClients();
+			} else {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, Resources.MSG_CLIENT_NOT_CREATED, null));
+			}
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, Resources.MSG_CLIENT_ID_INVALID, null));
+		}
 	}
 	
 	public boolean isShowNoClientsMessage() {

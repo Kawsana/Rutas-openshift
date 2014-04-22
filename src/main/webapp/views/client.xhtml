@@ -16,15 +16,26 @@
 		<ui:define name="content">
 			<br />
 			<h:form id="frmClient">
+				<p:growl id="growl" life="1500" autoUpdate="true"/>
 				<h:outputText id="lblRouteName" value="#{lang.lblRoute}: #{routeController.selectedRoute.name}" styleClass="title"/>
 				<p:panel id="pnlClientList">
 					<p:outputLabel id="lblClientsNotExists" value="#{lang.msgClientsNotExists}" rendered="#{clientController.showNoClientsMessage}"/>
 					<br /><br />
 					<p:panel rendered="#{!clientController.showNoClientsMessage}" styleClass="no-border">
-						<p:dataTable value="#{clientController.clientList}" paginator="true" rows="10" var="client">
+						<p:panel styleClass="export">
+					        <h:commandLink>
+					            <h:graphicImage library="images" name="excel.png" />
+					            <p:dataExporter type="xls" target="tblClients" fileName="clientes_ruta_#{routeController.selectedRoute.name}" />
+					        </h:commandLink>
+					        <h:commandLink>
+					            <h:graphicImage library="images" name="pdf.png" />
+					            <p:dataExporter type="pdf" target="tblClients" fileName="clientes_ruta_#{routeController.selectedRoute.name}"/>
+					        </h:commandLink>
+					    </p:panel>
+						<p:dataTable id="tblClients" value="#{clientController.clientList}" paginator="true" rows="10" var="client">
 							<p:column>
 								<f:facet name="header">
-									<h:outputText value="Id" />
+									<h:outputText value="RUC / CI" />
 								</f:facet>
 								<h:outputText value="#{client.id}" />
 							</p:column>
@@ -69,7 +80,7 @@
 							<p:inputText onkeypress="return validateLetters(event)"/>
 							<p:outputLabel value="#{lang.lblFirstLastName}:" styleClass="required"/>
 							<p:inputText onkeypress="return validateLetters(event)"/>
-							<p:outputLabel value="#{lang.lblSecondLastName}:" />
+							<h:outputLabel value="#{lang.lblSecondLastName}:" />
 							<p:inputText onkeypress="return validateLetters(event)"/>
 							<p:outputLabel value="#{lang.lblDateOfBirth}:" />
 					        <p:panelGrid id="pgDateOfBirth" columns="3">
@@ -101,7 +112,8 @@
 					</p:fieldset>
 					<br />
 					<p:commandButton value="#{lang.btnCreate}" onclick="showClientListDiv()" action="#{clientController.saveClient}" 
-						process="@this,pgDateOfBirth,pgRouteData,pgVisitData"/>
+						update="pnlClientList,growl" process="@this,pgDateOfBirth,pgRouteData,pgVisitData,pnlClientList">
+					</p:commandButton>
 				</p:panel>
 				<br /><br />
 				<p:commandLink action="routes" process="@this" styleClass="no-line button">

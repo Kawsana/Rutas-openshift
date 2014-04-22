@@ -28,4 +28,12 @@ public interface ClientService {
 	 */
 	boolean saveClient(Client client);
 	
+	/**
+	 * Verifies if the id (RUC or CI) is valid with the standard Ecuadorian mechanism.
+	 * @param id: RUC or CI to validate.
+	 * @return 1: If the id is valid.
+	 * 		  -1: If the id is invalid.
+	 * 		   0: If there is a problem within the method.
+	 */
+	public int validateId(String id);
 }

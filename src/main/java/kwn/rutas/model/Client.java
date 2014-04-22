@@ -27,7 +27,7 @@ public class Client {
 	 * Primary Key and id client.
 	 */
 	@Id
-	@Size(max = 10)
+	@Size(max = 13)
 	private String id;
 
 	/**

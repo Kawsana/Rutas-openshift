@@ -10,6 +10,12 @@
     font-size: medium;
     margin-top: 0.6em;
 }
+.export {
+	margin-bottom: 1%;
+    margin-right: -83%;
+    margin-top: -10%;
+    width: 13%;
+}
 .no-border {
 	border: none;
 }
