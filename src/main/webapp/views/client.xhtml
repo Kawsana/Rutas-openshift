@@ -3,7 +3,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"> 
+      xmlns:p="http://primefaces.org/ui">
 
 	<ui:composition template="#{lang.urlTemplate}">
 		<ui:define name="head">
@@ -53,12 +53,12 @@
 							</p:column>
 						</p:dataTable>
 					</p:panel>
-					<p:commandButton id="btnCreateClient" value="#{lang.btnCreateClient}" process="@this" onclick="showClientDiv()"/>
+					<p:commandButton id="btnCreateClient" value="#{lang.btnCreateClient}" process="@this" onclick="showClientDiv()" />
 				</p:panel>
 				<p:panel id="pnlCreateClient">
 					<p:fieldset legend="#{lang.lblRoute}">
 						<p:panelGrid id="pgRouteData" columns="4" styleClass="no-border">
-							<p:outputLabel value="#{lang.lblLocalName}:" styleClass="required"/>
+							<p:outputLabel value="#{lang.lblLocalName}:" styleClass="required" />
 							<p:inputText />
 							<p:outputLabel value="#{lang.lblLocalId}:" styleClass="required" />
 							<p:inputText value="#{clientController.client.id}" size="13" maxlength="13" onkeypress="return validateNumbers(event)"/>
@@ -111,8 +111,9 @@
 						</p:panelGrid>
 					</p:fieldset>
 					<br />
-					<p:commandButton value="#{lang.btnCreate}" onclick="showClientListDiv()" action="#{clientController.saveClient}" 
-						update="pnlClientList,growl" process="@this,pgDateOfBirth,pgRouteData,pgVisitData,pnlClientList">
+					<p:commandButton value="#{lang.btnCreate}" onclick="showClientListDiv()" action="#{clientController.saveClient}"
+						update="pnlClientList,growl" oncomplete="#{routeController.loadRoutes()}" 
+						process="@this,pgDateOfBirth,pgRouteData,pgVisitData,pnlClientList">
 					</p:commandButton>
 				</p:panel>
 				<br /><br />

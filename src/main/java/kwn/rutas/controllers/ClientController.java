@@ -85,10 +85,10 @@ public class ClientController {
 		// Set selected route to the object.
 		client.setRoute(selectedRoute);
 		
-		// Id validation. Only if the id is correct the client is saved.
+		// Id validation. Only if the id is correct the client will be saved.
 		if(clientService.validateId(client.getId().trim()) == Constants.ONE) {
 			// Save the client
-			if(clientService.saveClient(client)){
+			if(clientService.saveClient(client)) {
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, Resources.MSG_CLIENT_CREATED, null));
 				// Update the client lists.
 				loadClients();

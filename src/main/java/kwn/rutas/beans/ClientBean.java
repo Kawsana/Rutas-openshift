@@ -33,7 +33,7 @@ public class ClientBean extends BaseBean implements ClientService {
 	}
 	
 	/**
-	 * Save a new client into the database if it not exits.
+	 * Save a new client into the database if it not exits and update the client number in the selected route.
 	 * @param client object to persists into the database.
 	 * @return True if the client has been created, false otherwise.
 	 */
@@ -41,7 +41,13 @@ public class ClientBean extends BaseBean implements ClientService {
 	public boolean saveClient(Client client) {
 		boolean success;
 		if(em.find(Client.class, client.getId()) == null){
+			// Persist the client in the database
 			em.persist(client);
+			// Update client number in the selected route
+			query = em.createQuery(Queries.UPDATE_CLIENTS_IN_ROUTE);
+			query.setParameter(Constants.ONE, client.getRoute().getClients() + 1);
+			query.setParameter(Constants.TWO, client.getRoute().getName());
+			query.executeUpdate();
 			success = true;
 		}else {
 			success = false;

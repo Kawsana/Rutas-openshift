@@ -22,7 +22,7 @@ public interface ClientService {
 	public Collection<Client> getClientsByRoute(String id);
 	
 	/**
-	 * Save a new client into the database.
+	 * Save a new client into the database if it not exits and update the client number in the selected route.
 	 * @param client object to persists into the database.
 	 * @return True if the client has been created, false otherwise.
 	 */

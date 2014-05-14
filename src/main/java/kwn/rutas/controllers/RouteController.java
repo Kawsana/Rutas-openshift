@@ -67,8 +67,8 @@ public class RouteController {
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, Resources.MSG_ROUTE_NOT_CREATED, null));
 		}
-		route.setName(null); //Set null to 'name' property in order to clean the 'txtRouteName' field.
-		loadRoutes(); //call to loadRoutes method to update the routes created.
+		route.setName(null); // Clean the 'txtRouteName' field.
+		loadRoutes(true); // Update the route list.
 	}
 
 	/**
