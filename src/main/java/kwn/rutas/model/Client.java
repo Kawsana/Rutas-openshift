@@ -46,7 +46,8 @@ public class Client {
 	/**
 	 * Define if the client have or not an exhibitor.
 	 */
-	private boolean Exhibitor;
+	@Size(max = 2)
+	private String Exhibitor;
 	
 	/**
 	 * Used to format the dateOfBirth property.
@@ -80,11 +81,11 @@ public class Client {
 		this.route = route;
 	}
 
-	public boolean isExhibitor() {
+	public String getExhibitor() {
 		return Exhibitor;
 	}
 
-	public void setExhibitor(boolean exhibitor) {
+	public void setExhibitor(String exhibitor) {
 		Exhibitor = exhibitor;
 	}
 

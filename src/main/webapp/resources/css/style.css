@@ -2,6 +2,10 @@
     margin: auto;
     width: 90%;
 }
+#close {
+    margin-right: -104%;
+    margin-top: -2%;
+}
 .button:visited {
 	color: black;
 }

@@ -35,19 +35,19 @@
 						<p:dataTable id="tblClients" value="#{clientController.clientList}" paginator="true" rows="10" var="client">
 							<p:column>
 								<f:facet name="header">
-									<h:outputText value="RUC / CI" />
+									<h:outputText value="#{lang.lblLocalId}" />
 								</f:facet>
 								<h:outputText value="#{client.id}" />
 							</p:column>
 							<p:column>
 								<f:facet name="header">
-									<h:outputText value="Exhibidor" />
+									<h:outputText value="#{lang.lblExhibitor}" />
 								</f:facet>
 								<h:outputText value="#{client.exhibitor}" />
 							</p:column>
 							<p:column>
 								<f:facet name="header">
-									<h:outputText value="Fecha de nacimiento" />
+									<h:outputText value="#{lang.lblDateOfBirth}" />
 								</f:facet>
 								<h:outputText value="#{client.dateFormatted}" />
 							</p:column>
@@ -56,6 +56,11 @@
 					<p:commandButton id="btnCreateClient" value="#{lang.btnCreateClient}" process="@this" onclick="showClientDiv()" />
 				</p:panel>
 				<p:panel id="pnlCreateClient">
+					<div id="close">
+						<p:commandLink onclick="showClientListDiv()" process="@this" styleClass="close">
+					            <h:graphicImage library="images" name="close.png" />
+					    </p:commandLink>
+					</div>
 					<p:fieldset legend="#{lang.lblRoute}">
 						<p:panelGrid id="pgRouteData" columns="4" styleClass="no-border">
 							<p:outputLabel value="#{lang.lblLocalName}:" styleClass="required" />
@@ -105,8 +110,8 @@
 							<p:inputText />
 							<p:outputLabel value="#{lang.lblExhibitor}:" styleClass="required"/>
 							<p:selectOneButton value="#{clientController.client.exhibitor}">
-					            <f:selectItem itemLabel="#{lang.btnYes}" itemValue="#{lang.valOne}" />
-					            <f:selectItem itemLabel="#{lang.btnNo}" itemValue="#{lang.valZero}" />
+					            <f:selectItem itemLabel="#{lang.btnYes}" itemValue="#{lang.btnYes}" />
+					            <f:selectItem itemLabel="#{lang.btnNo}" itemValue="#{lang.btnNo}" />
 					        </p:selectOneButton>
 						</p:panelGrid>
 					</p:fieldset>

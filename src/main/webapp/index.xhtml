@@ -40,6 +40,11 @@
 				</p:panel>
 				<br /><br />
 				<p:panel id="pnlNewRoute">
+					<div id="close">
+						<p:commandLink onclick="showRouteListDiv()" process="@this" styleClass="close">
+					            <h:graphicImage library="images" name="close.png" />
+					    </p:commandLink>
+					</div>
 					<br />
 					<p:inputText id="txtRouteName" value="#{routeController.route.name}" onkeypress="return validateNumbers(event)" 
 						maxlength="4" required="true" requiredMessage="#{lang.msgRouteIdRequired}"/>
