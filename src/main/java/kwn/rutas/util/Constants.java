@@ -7,6 +7,7 @@ package main.java.kwn.rutas.util;
  */
 public final class Constants {
 	
+	public static final int INITIAL_SELECT_VALUE = -1;
 	public static final int ONE = 1;
 	public static final int TWO = 2;
 	public static final int THREE = 3;

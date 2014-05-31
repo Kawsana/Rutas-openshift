@@ -24,12 +24,12 @@
 					<p:panel rendered="#{!clientController.showNoClientsMessage}" styleClass="no-border">
 						<p:panel styleClass="export">
 					        <h:commandLink>
-					            <h:graphicImage library="images" name="excel.png" />
-					            <p:dataExporter type="xls" target="tblClients" fileName="clientes_ruta_#{routeController.selectedRoute.name}" />
+					            <p:graphicImage library="images" name="excel.png" />
+					            <p:dataExporter type="xls" target="tblClients" fileName="#{lang.exportFileName}#{routeController.selectedRoute.name}" />
 					        </h:commandLink>
 					        <h:commandLink>
-					            <h:graphicImage library="images" name="pdf.png" />
-					            <p:dataExporter type="pdf" target="tblClients" fileName="clientes_ruta_#{routeController.selectedRoute.name}"/>
+					            <p:graphicImage library="images" name="pdf.png" />
+					            <p:dataExporter type="pdf" target="tblClients" fileName="#{lang.exportFileName}#{routeController.selectedRoute.name}"/>
 					        </h:commandLink>
 					    </p:panel>
 						<p:dataTable id="tblClients" value="#{clientController.clientList}" paginator="true" rows="10" var="client">
@@ -64,9 +64,10 @@
 					<p:fieldset legend="#{lang.lblRoute}">
 						<p:panelGrid id="pgRouteData" columns="4" styleClass="no-border">
 							<p:outputLabel value="#{lang.lblLocalName}:" styleClass="required" />
-							<p:inputText />
+							<p:inputText id="txtLocalName" required="true"/>
 							<p:outputLabel value="#{lang.lblLocalId}:" styleClass="required" />
-							<p:inputText value="#{clientController.client.id}" size="13" maxlength="13" onkeypress="return validateNumbers(event)"/>
+							<p:inputText id="txtLocalId" value="#{clientController.client.id}" size="13" maxlength="13" 
+								onkeypress="return validateNumbers(event)" required="true"/>
 							<p:outputLabel value="#{lang.lblAddress}:"/>
 							<p:inputText size="50"/>
 							<p:outputLabel value="#{lang.lblReference}:" />
@@ -78,27 +79,27 @@
 						</p:panelGrid>
 					</p:fieldset>
 					<p:fieldset legend="#{lang.lblClient}" styleClass="tab">
-						<p:panelGrid columns="4" styleClass="no-border">
+						<p:panelGrid id="pgClientData" columns="4" styleClass="no-border">
 							<p:outputLabel value="#{lang.lblFirstName}:" styleClass="required"/>
-							<p:inputText onkeypress="return validateLetters(event)"/>
+							<p:inputText id="txtFirstName" onkeypress="return validateLetters(event)" required="true"/>
 							<p:outputLabel value="#{lang.lblSecondName}:" />
 							<p:inputText onkeypress="return validateLetters(event)"/>
 							<p:outputLabel value="#{lang.lblFirstLastName}:" styleClass="required"/>
-							<p:inputText onkeypress="return validateLetters(event)"/>
+							<p:inputText id="txtFirstLastName" onkeypress="return validateLetters(event)" required="true"/>
 							<h:outputLabel value="#{lang.lblSecondLastName}:" />
 							<p:inputText onkeypress="return validateLetters(event)"/>
 							<p:outputLabel value="#{lang.lblDateOfBirth}:" />
 					        <p:panelGrid id="pgDateOfBirth" columns="3">
-					        	<p:selectOneMenu value="#{clientController.selectedDay}" panelStyleClass="select" styleClass="select">
-						            <f:selectItem itemLabel="#{lang.lblDay}" itemValue="#{lang.valZero}" />
+					        	<p:selectOneMenu is="somDay" value="#{clientController.selectedDay}" panelStyleClass="select" styleClass="select">
+						            <f:selectItem itemLabel="#{lang.lblDay}" itemValue="#{utilController.initialSelectValue()}" />
 						            <f:selectItems value="#{clientController.days}" var="day" itemLabel="#{day.label}" itemValue="#{day.value}"/>
 						        </p:selectOneMenu>
-						        <p:selectOneMenu value="#{clientController.selectedMonth}" panelStyleClass="select" styleClass="select">
-						            <f:selectItem itemLabel="#{lang.lblMonth}" itemValue="#{lang.valZero}" />
+						        <p:selectOneMenu id="somMonth" value="#{clientController.selectedMonth}" panelStyleClass="select" styleClass="select">
+						            <f:selectItem itemLabel="#{lang.lblMonth}" itemValue="#{utilController.initialSelectValue()}" />
 						            <f:selectItems value="#{clientController.months}" var="month" itemLabel="#{month.label}" itemValue="#{month.value}"/>
 						        </p:selectOneMenu>
-						        <p:selectOneMenu value="#{clientController.selectedYear}" panelStyleClass="select" styleClass="select">
-						            <f:selectItem itemLabel="#{lang.lblYear}" itemValue="#{lang.valZero}" />
+						        <p:selectOneMenu id="somYear" value="#{clientController.selectedYear}" panelStyleClass="select" styleClass="select">
+						            <f:selectItem itemLabel="#{lang.lblYear}" itemValue="#{utilController.initialSelectValue()}" />
 						            <f:selectItems value="#{clientController.years}" var="year" itemLabel="#{year.label}" itemValue="#{year.value}"/>
 						        </p:selectOneMenu>
 					        </p:panelGrid>
@@ -107,9 +108,9 @@
 					<p:fieldset legend="#{lang.lblVisit}" styleClass="tab">
 						<p:panelGrid id="pgVisitData" columns="4" styleClass="no-border">
 							<p:outputLabel value="#{lang.lblVisitFrequency}:" styleClass="required"/>
-							<p:inputText />
+							<p:inputText id="txtVisitFrequency" required="true"/>
 							<p:outputLabel value="#{lang.lblExhibitor}:" styleClass="required"/>
-							<p:selectOneButton value="#{clientController.client.exhibitor}">
+							<p:selectOneButton id="somExhibitor" value="#{clientController.client.exhibitor}" required="true">
 					            <f:selectItem itemLabel="#{lang.btnYes}" itemValue="#{lang.btnYes}" />
 					            <f:selectItem itemLabel="#{lang.btnNo}" itemValue="#{lang.btnNo}" />
 					        </p:selectOneButton>
@@ -118,7 +119,7 @@
 					<br />
 					<p:commandButton value="#{lang.btnCreate}" onclick="showClientListDiv()" action="#{clientController.saveClient}"
 						update="pnlClientList,growl" oncomplete="#{routeController.loadRoutes()}" 
-						process="@this,pgDateOfBirth,pgRouteData,pgVisitData,pnlClientList">
+						process="@this,pgClientData,pgRouteData,pgVisitData,pnlClientList">
 					</p:commandButton>
 				</p:panel>
 				<br /><br />

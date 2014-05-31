@@ -40,7 +40,7 @@
 	background-image: url("#{resource['images:required.png']}");
 	background-repeat: no-repeat;
     margin-left: -15px;
-    padding-left: 18%;
+    padding-left: 18px;
     position: relative;
 }
 .routeItem {

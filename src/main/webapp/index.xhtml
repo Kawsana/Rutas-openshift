@@ -46,9 +46,12 @@
 					    </p:commandLink>
 					</div>
 					<br />
-					<p:inputText id="txtRouteName" value="#{routeController.route.name}" onkeypress="return validateNumbers(event)" 
-						maxlength="4" required="true" requiredMessage="#{lang.msgRouteIdRequired}"/>
-					<br /><br />
+					<p:panelGrid columns="2" styleClass="no-border">
+						<p:outputLabel value="#{lang.lblRouteName}:" styleClass="required" />
+						<p:inputText id="txtRouteName" value="#{routeController.route.name}" onkeypress="return validateNumbers(event)" 
+							maxlength="4" required="true" requiredMessage="#{lang.msgRouteIdRequired}" styleClass="required"/>
+					</p:panelGrid>
+					<br />
 					<p:commandButton value="#{lang.btnCreate}" action="#{routeController.saveRoute}" onclick="showRouteListDiv()" 
 						update="txtRouteName,pnlRoutes,growl" process="@this,txtRouteName,pnlRoutes">
 					</p:commandButton>

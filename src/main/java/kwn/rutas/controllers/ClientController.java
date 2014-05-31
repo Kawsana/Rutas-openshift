@@ -76,7 +76,7 @@ public class ClientController {
 	 */
 	public void saveClient() {
 		// Verifies if the user select a date with the components before save it or set null in this field.
-		if(selectedYear == Constants.ZERO || selectedMonth == Constants.ZERO || selectedDay == Constants.ZERO) {
+		if(selectedYear == Constants.INITIAL_SELECT_VALUE || selectedMonth == Constants.INITIAL_SELECT_VALUE || selectedDay == Constants.INITIAL_SELECT_VALUE) {
 			client.setDateOfBirth(null);
 		} else {
 			Calendar dateOfBirth = new GregorianCalendar(selectedYear, selectedMonth, selectedDay);
